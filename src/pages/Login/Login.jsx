@@ -1,13 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    // TODO: Add authentication logic here
+    // If login is successful:
+    navigate("/dashboard");
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
         <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
 
-        <form>
+        <form onSubmit={handleLogin}>
           <div className="mb-4">
             <label className="block mb-1 font-medium">Email</label>
             <input
@@ -34,17 +43,12 @@ const Login = () => {
           </button>
         </form>
 
-        {/* Forgot Password */}
         <div className="text-center mt-4">
-          <Link
-            to="/forgot-password"
-            className="text-blue-600 hover:underline"
-          >
+          <Link to="/forgot-password" className="text-blue-600 hover:underline">
             Forgot Password?
           </Link>
         </div>
 
-        {/* Register Button */}
         <div className="text-center mt-6">
           <p className="text-gray-600">Don't have an account?</p>
           <Link
